@@ -9,14 +9,13 @@ export function Deliverables() {
   const tt = t as unknown as AnyT;
 
   // --- TRANSLATIONS (safe fallbacks)
-  // Tangible Deliverables (mindmap)
   const tangibleTitle: string =
     tt?.tangibleDeliverables?.title ??
     tt?.deliverables?.tangibleTitle ??
     tt?.deliverables?.title ??
     "Tangible Deliverables";
 
-  // Prefer a dedicated key for mindmap items; fallback to deliverables.items
+  // Prefer a dedicated key for tangible items; fallback to deliverables.items
   const tangibleItems: string[] =
     (tt?.tangibleDeliverables?.items as string[]) ??
     (tt?.deliverables?.mindmapItems as string[]) ??
@@ -29,202 +28,196 @@ export function Deliverables() {
       "Clear ownership",
     ];
 
-  // Recognize Your Situation (floating non-interactive pain bubbles)
-  const recognizeTitle: string =
-    tt?.recognizeYourSituation?.title ??
-    tt?.deliverables?.recognizeTitle ??
-    "Recognize Your Situation?";
+  const splitPainLabel = (text: string): string[] => {
+    const normalized = String(text).trim();
 
-  const recognizeItems: string[] =
-    (tt?.recognizeYourSituation?.items as string[]) ??
-    (tt?.deliverables?.recognizeItems as string[]) ??
-    [
-      "No stable focus — priorities shift weekly",
-      "Busy teams, weaker outcomes",
-      "Leadership sees different realities — decisions stall",
-      "Growth plans exist on paper, not in action",
-      "Key people are stretched thin across too many fronts",
-    ];
+    // Prefer splitting on em-dash to keep meaning (matches your copy style)
+    if (normalized.includes(" — ")) {
+      const parts = normalized.split(" — ");
+      if (parts.length >= 2) {
+        const left = parts[0]?.trim();
+        const right = parts.slice(1).join(" — ").trim();
+        if (left && right) return [`${left} —`, right];
+      }
+    }
 
-  // ---- LAYOUT HELPERS
-  const painPositions = [
-    // top
-    "left-1/2 top-8 -translate-x-1/2",
-    // upper-left
-    "left-10 top-36",
-    // upper-right
-    "right-10 top-40",
-    // lower-left
-    "left-14 bottom-16",
-    // lower-right
-    "right-14 bottom-20",
-  ];
+    // Fallback: split long lines roughly in half on a space
+    if (normalized.length > 48) {
+      const mid = Math.floor(normalized.length / 2);
+      let idx = normalized.lastIndexOf(" ", mid);
+      if (idx < 20) idx = normalized.indexOf(" ", mid);
+      if (idx > 0) return [normalized.slice(0, idx), normalized.slice(idx + 1)];
+    }
 
-  // Different drift patterns / durations so they don't sync.
-  const drifts = [
-    "[animation:driftA_17s_ease-in-out_infinite]",
-    "[animation:driftB_21s_ease-in-out_infinite_0.6s]",
-    "[animation:driftC_19s_ease-in-out_infinite_1.1s]",
-    "[animation:driftB_23s_ease-in-out_infinite_0.2s]",
-    "[animation:driftA_20s_ease-in-out_infinite_0.9s]",
-  ];
+    return [normalized];
+  };
 
   return (
     <section className="relative py-20 sm:py-28">
+      {/* -------------------------------- */}
+      {/* Tangible Deliverables (MINDMAP: pains -> Strategic Sessions -> deliverables) */}
+      {/* -------------------------------- */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* -------------------------------- */}
-        {/* Tangible Deliverables (LIST + VISUAL PLACEHOLDER) */}
-        {/* -------------------------------- */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
-          {/* LEFT: title + list */}
-          <div className="lg:col-span-6">
-            <h2 className="text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl lg:text-left">
-              {tangibleTitle}
-            </h2>
+        <h2 className="text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
+          {tangibleTitle}
+        </h2>
 
-            <ul className="mt-10 space-y-4">
-              {tangibleItems.slice(0, 5).map((item, i) => (
-                <li
-                  key={i}
-                  className="rounded-2xl border border-border/35 bg-card/15 px-6 py-5 text-muted-foreground shadow-[0_0_70px_rgba(236,72,153,0.08)] backdrop-blur-md"
-                >
-                  <span className="block whitespace-pre-line leading-relaxed">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* RIGHT: placeholder (you will add hero/visual later) */}
-          <div className="lg:col-span-6">
-            <div
-              aria-label="Tangible Deliverables Visual Placeholder"
-              className="relative mx-auto mt-2 min-h-[420px] w-full max-w-xl overflow-hidden rounded-3xl border border-border/35 bg-card/10 shadow-[0_0_120px_rgba(236,72,153,0.12)] backdrop-blur-md lg:mt-0"
-            >
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(236,72,153,0.18),transparent_60%)] opacity-60"
-              />
-
-              <div className="absolute inset-0 flex items-center justify-center p-10">
-                <div className="text-center">
-                  <div className="mx-auto h-14 w-14 rounded-full border border-border/40 bg-card/20" />
-                  <p className="mt-4 text-sm text-muted-foreground/80">
-                    Visual placeholder — we’ll add the reference later
-                  </p>
-                </div>
-              </div>
-
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-6 rounded-[22px] border border-dashed border-border/35"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* spacer */}
-        <div className="mt-16 sm:mt-24" />
-
-        {/* ------------------------------------ */}
-        {/* Recognize Your Situation (FLOAT CLOUD) */}
-        {/* ------------------------------------ */}
-        <div className="relative mx-auto flex min-h-[560px] items-center justify-center">
-          <h3 className="pointer-events-none select-none text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
-            {recognizeTitle}
-          </h3>
-
-          {recognizeItems.slice(0, 5).map((text, i) => (
-            <div
-              key={i}
-              className={"pointer-events-none absolute " + (painPositions[i] || "")}
-            >
-              {/* Animation on inner bubble so we don't break absolute positioning transforms */}
-              <div
-                className={
-                  "select-none rounded-full border border-border/40 bg-card/15 backdrop-blur-md " +
-                  "px-7 py-5 text-center text-sm text-muted-foreground shadow-[0_0_80px_rgba(236,72,153,0.10)] " +
-                  "w-[320px] min-h-[90px] flex items-center justify-center leading-snug " +
-                  (drifts[i] || "")
-                }
-              >
-                <span className="block">{text}</span>
-              </div>
-            </div>
-          ))}
-
+        {/* Visual mindmap */}
+        <div
+          aria-label="Tangible Deliverables Mindmap"
+          className="relative mx-auto mt-10 w-full overflow-hidden rounded-3xl border border-border/35 bg-card/10 shadow-[0_0_140px_rgba(236,72,153,0.10)] backdrop-blur-md"
+        >
+          {/* Subtle vignette */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center"
-          >
-            <div className="h-[360px] w-[360px] rounded-full bg-primary/10 blur-3xl" />
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.00),rgba(0,0,0,0.45)_70%)]"
+          />
+
+          {/* Fixed aspect ratio container (responsive) */}
+          <div className="relative aspect-[16/7] min-h-[360px] w-full">
+            <svg
+              className="absolute inset-0 h-full w-full"
+              viewBox="-220 0 1420 520"
+              role="img"
+              aria-label="Mindmap connecting pains to Strategic Sessions and to deliverables"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                {/* Arrow heads */}
+                <marker
+                  id="arrowIn"
+                  markerWidth="10"
+                  markerHeight="10"
+                  refX="9"
+                  refY="5"
+                  orient="auto"
+                  markerUnits="strokeWidth"
+                >
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#6B4A73" />
+                </marker>
+
+                <marker
+                  id="arrowOut"
+                  markerWidth="10"
+                  markerHeight="10"
+                  refX="9"
+                  refY="5"
+                  orient="auto"
+                  markerUnits="strokeWidth"
+                >
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#D7A7FF" />
+                </marker>
+
+                {/* Glow for outgoing connections */}
+                <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#D7A7FF" floodOpacity="0.45" />
+                </filter>
+              </defs>
+
+              {/* Connection lines: incoming (pains -> center) */}
+              <g
+                opacity="0.75"
+                stroke="#6B4A73"
+                strokeWidth="2.25"
+                fill="none"
+                strokeLinecap="round"
+              >
+                <path d="M 180 110 C 300 110, 420 180, 516 245" />
+                <path d="M 180 190 C 310 190, 430 220, 516 258" />
+                <path d="M 180 270 C 320 270, 435 270, 516 270" />
+                <path d="M 180 350 C 310 350, 430 320, 516 282" />
+                <path d="M 180 430 C 300 430, 420 360, 516 295" />
+              </g>
+
+              {/* Connection lines: outgoing (center -> deliverables) */}
+              <g
+                opacity="0.98"
+                stroke="#D7A7FF"
+                strokeWidth="2.75"
+                fill="none"
+                markerEnd="url(#arrowOut)"
+                filter="url(#softGlow)"
+                strokeLinecap="round"
+              >
+                <path d="M 684 245 C 760 190, 820 120, 980 110" />
+                <path d="M 684 258 C 770 230, 835 195, 980 190" />
+                <path d="M 684 270 C 780 270, 850 270, 980 270" />
+                <path d="M 684 282 C 770 310, 835 345, 980 350" />
+                <path d="M 684 295 C 760 350, 820 420, 980 430" />
+              </g>
+
+              {/* Center circle */}
+              <g>
+                <circle cx="600" cy="270" r="84" fill="#38273E" opacity="0.92" />
+                <circle cx="600" cy="270" r="86" fill="none" stroke="#4B3554" strokeWidth="2" opacity="0.7" />
+                <circle cx="600" cy="270" r="98" fill="none" stroke="#4B3554" strokeWidth="10" opacity="0.12" />
+                <text
+                  x="600"
+                  y="262"
+                  textAnchor="middle"
+                  fill="#FFFFFF"
+                  fontSize="18"
+                  fontWeight="600"
+                  fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+                >
+                  <tspan x="600" dy="0">Strategic</tspan>
+                  <tspan x="600" dy="22">Sessions</tspan>
+                </text>
+              </g>
+
+              {/* Left labels (pains) */}
+              <g
+                fill="rgba(255,255,255,0.78)"
+                fontSize="16"
+                fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                {[
+                  { y: 110, t: "No stable focus — priorities shift weekly" },
+                  { y: 190, t: "Busy teams, weaker outcomes" },
+                  { y: 270, t: "Leadership sees different realities — decisions stall" },
+                  { y: 350, t: "Growth plans exist on paper, not in action" },
+                  { y: 430, t: "Key people are stretched thin across too many fronts" },
+                ].map((p, i) => {
+                  const x = 160;
+                  const lines = splitPainLabel(p.t);
+                  const baseY = p.y - (lines.length - 1) * 10;
+                  return (
+                    <text key={`pain-label-${i}`} x={x} y={baseY} textAnchor="end">
+                      {lines.map((ln, idx) => (
+                        <tspan key={idx} x={x} dy={idx === 0 ? 0 : 20}>
+                          {ln}
+                        </tspan>
+                      ))}
+                    </text>
+                  );
+                })}
+              </g>
+
+              {/* Right labels (deliverables) */}
+              <g
+                fill="rgba(255,255,255,0.88)"
+                fontSize="16"
+                fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                {tangibleItems.slice(0, 5).map((raw, i) => {
+                  const lines = String(raw).split("\n");
+                  const yList = [110, 190, 270, 350, 430];
+                  const y = yList[i] ?? 110 + i * 80;
+                  return (
+                    <text key={`out-label-${i}`} x={1000} y={y} textAnchor="start">
+                      {lines.map((ln, idx) => (
+                        <tspan key={idx} x={1000} dy={idx === 0 ? 0 : 20}>
+                          {ln}
+                        </tspan>
+                      ))}
+                    </text>
+                  );
+                })}
+              </g>
+            </svg>
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        @keyframes driftA {
-          0% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          20% {
-            transform: translate3d(14px, -10px, 0) rotate(0.8deg);
-          }
-          45% {
-            transform: translate3d(-10px, -16px, 0) rotate(-0.9deg);
-          }
-          70% {
-            transform: translate3d(18px, 12px, 0) rotate(1.1deg);
-          }
-          100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-        }
-
-        @keyframes driftB {
-          0% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          18% {
-            transform: translate3d(-18px, -8px, 0) rotate(-0.7deg);
-          }
-          40% {
-            transform: translate3d(10px, -18px, 0) rotate(0.9deg);
-          }
-          68% {
-            transform: translate3d(-8px, 16px, 0) rotate(-1deg);
-          }
-          100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-        }
-
-        @keyframes driftC {
-          0% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-          22% {
-            transform: translate3d(12px, 10px, 0) rotate(0.6deg);
-          }
-          50% {
-            transform: translate3d(-14px, 16px, 0) rotate(-0.8deg);
-          }
-          78% {
-            transform: translate3d(8px, -14px, 0) rotate(0.9deg);
-          }
-          100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation: none !important;
-            transition: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
