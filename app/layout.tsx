@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'ssselena | Strategic Sessions for Leaders',
-  description: 'Transform chaos into clarity. Strategic sessions that align your leadership team and deliver measurable results in 1-2 weeks.',
+  description: 'Turn strategy chaos into focused action. Strategic sessions that align your leadership team and deliver measurable results in 1-2 weeks.',
   generator: 'v0.app',
   icons: {
     icon: [
