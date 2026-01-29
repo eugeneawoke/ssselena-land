@@ -17,6 +17,7 @@ export const translations = {
     hero: {
       title: "Transform Chaos into Clarity",
       subtitle: "Strategic sessions that align your leadership team and deliver measurable results in 1-2 weeks",
+      description: "Facilitated strategic sessions that align your leadership team, set clear priorities, and produce actionable plans—in just 1–2 days.",
       badge: "For CEOs & C-Level Leaders",
     },
     situation: {
@@ -163,6 +164,7 @@ export const translations = {
     hero: {
       title: "Превратите хаос в ясность",
       subtitle: "Стратегические сессии, которые синхронизируют вашу команду лидеров и дают измеримые результаты за 1-2 недели",
+      description: "Фасилитируемые стратегические сессии, которые синхронизируют команду руководства, задают чёткие приоритеты и дают планы действий — за 1–2 дня.",
       badge: "Для CEO и топ-менеджеров",
     },
     situation: {
@@ -309,6 +311,7 @@ export const translations = {
     hero: {
       title: "ქაოსი გარდაქმენით სიცხადეში",
       subtitle: "სტრატეგიული სესიები, რომლებიც ათანხმებს თქვენს ლიდერთა გუნდს და აძლევს გაზომვად შედეგებს 1-2 კვირაში",
+      description: "ფასილიტირებული სტრატეგიული სესიები, რომლებიც ათანხმებს თქვენს ლიდერთა გუნდს, განსაზღვრავს მკაფიო პრიორიტეტებს და აწარმოებს მოქმედების გეგმებს — მხოლოდ 1–2 დღეში.",
       badge: "CEO და C-დონის ლიდერებისთვის",
     },
     situation: {
@@ -455,6 +458,7 @@ export const translations = {
     hero: {
       title: "Хаосты анықтыққа айналдырыңыз",
       subtitle: "Көшбасшылар тобын біріктіретін және 1-2 аптада өлшенетін нәтижелер беретін стратегиялық сессиялар",
+      description: "Фасилитацияланған стратегиялық сессиялар көшбасшылар тобыңызды біріктіреді, нақты басымдықтарды белгілейді және 1–2 күн ішінде әрекет жоспарларын жасайды.",
       badge: "CEO және C-деңгей көшбасшылары үшін",
     },
     situation: {
