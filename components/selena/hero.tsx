@@ -11,23 +11,36 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* ColorBends background (full section) */}
+      {/* ColorBends background — dynamic size, same look on all screens */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <ColorBends
-          rotation={130}
-          speed={0.1}
-          colors={["#52395a", "#231826"]}
-          transparent
-          autoRotate={0}
-          scale={1}
-          frequency={1}
-          warpStrength={1}
-          mouseInfluence={1}
-          parallax={0.5}
-          noise={0.1}
-          className="w-full h-full"
-        />
+        <div
+          className="w-full h-full min-h-full"
+          style={{ position: "relative", width: "100%", height: "100%", minHeight: "100%" }}
+        >
+          <ColorBends
+            rotation={130}
+            speed={0.1}
+            colors={["#52395a", "#231826"]}
+            transparent
+            autoRotate={0}
+            scale={1}
+            frequency={1}
+            warpStrength={1}
+            mouseInfluence={1}
+            parallax={0.5}
+            noise={0.1}
+          />
+        </div>
       </div>
+
+      {/* Soft transition to next block — gradient mask at bottom */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-64 sm:h-80 md:h-96"
+        style={{
+          background: "linear-gradient(to top, var(--background) 0%, var(--background) 15%, transparent 70%, transparent 100%)",
+        }}
+        aria-hidden
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-12">
