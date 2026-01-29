@@ -1,32 +1,20 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n/context";
-
-type AnyT = Record<string, any>;
+import { useIsMobile } from "@/hooks/use-mobile";
+import { ChevronDown } from "lucide-react";
 
 export function Deliverables() {
   const { t } = useI18n();
-  const tt = t as unknown as AnyT;
+  const isMobile = useIsMobile();
 
-  // --- TRANSLATIONS (safe fallbacks)
-  const tangibleTitle: string =
-    tt?.tangibleDeliverables?.title ??
-    tt?.deliverables?.tangibleTitle ??
-    tt?.deliverables?.title ??
-    "Tangible Deliverables";
-
-  // Prefer a dedicated key for tangible items; fallback to deliverables.items
-  const tangibleItems: string[] =
-    (tt?.tangibleDeliverables?.items as string[]) ??
-    (tt?.deliverables?.mindmapItems as string[]) ??
-    (tt?.deliverables?.items as string[]) ??
-    [
-      "Clarity in\n1–2 weeks",
-      "Measurable goals\n& metrics",
-      "Notion / Miro",
-      "Action plan\n(30/60/90)",
-      "Clear ownership",
-    ];
+  const tangibleTitle = t.deliverables.title;
+  const centerLabel = t.deliverables.mindmap.center;
+  const painItems = t.situation.items.slice(0, 5);
+  const tangibleItems = [
+    ...t.deliverables.mindmap.nodes,
+    ...t.deliverables.mindmap.subNodes,
+  ].slice(0, 5);
 
   const splitPainLabel = (text: string): string[] => {
     const normalized = String(text).trim();
@@ -52,19 +40,71 @@ export function Deliverables() {
     return [normalized];
   };
 
+  if (isMobile) {
+    return (
+      <section className="relative py-12 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
+            {tangibleTitle}
+          </h2>
+          <div
+            aria-label="Tangible Deliverables: from pains to strategic sessions to deliverables"
+            className="mx-auto mt-8 flex max-w-sm flex-col items-center gap-6"
+          >
+            {/* Pains */}
+            <div className="w-full space-y-3 rounded-2xl border border-border/35 bg-card/10 px-4 py-4 backdrop-blur-sm">
+              <p className="text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Pains
+              </p>
+              <ul className="space-y-2">
+                {painItems.map((text, i) => (
+                  <li
+                    key={i}
+                    className="rounded-lg border border-border/40 bg-card/15 px-4 py-3 text-sm text-muted-foreground"
+                  >
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ChevronDown className="h-6 w-6 shrink-0 text-primary/70" aria-hidden />
+            {/* Strategic Sessions */}
+            <div className="rounded-2xl border border-primary/30 bg-primary/10 px-6 py-4 text-center backdrop-blur-sm">
+              <p className="font-semibold text-foreground">{centerLabel}</p>
+            </div>
+            <ChevronDown className="h-6 w-6 shrink-0 text-primary/70" aria-hidden />
+            {/* Deliverables */}
+            <div className="w-full space-y-3 rounded-2xl border border-border/35 bg-card/10 px-4 py-4 backdrop-blur-sm">
+              <p className="text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Deliverables
+              </p>
+              <ul className="space-y-2">
+                {tangibleItems.map((text, i) => (
+                  <li
+                    key={i}
+                    className="rounded-lg border border-border/40 bg-card/15 px-4 py-3 text-sm text-muted-foreground"
+                  >
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="relative py-20 sm:py-28">
-      {/* -------------------------------- */}
-      {/* Tangible Deliverables (MINDMAP: pains -> Strategic Sessions -> deliverables) */}
-      {/* -------------------------------- */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
           {tangibleTitle}
         </h2>
 
-        {/* Visual mindmap */}
+        {/* Visual mindmap (desktop) */}
         <div
-          aria-label="Tangible Deliverables Mindmap"
+          aria-label="Tangible Deliverables: from pains to strategic sessions to deliverables"
           className="relative mx-auto mt-10 w-full overflow-hidden rounded-3xl border border-border/35 bg-card/10 shadow-[0_0_140px_rgba(236,72,153,0.10)] backdrop-blur-md"
         >
           {/* Subtle vignette */}
@@ -160,8 +200,11 @@ export function Deliverables() {
                   fontWeight="600"
                   fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
                 >
-                  <tspan x="600" dy="0">Strategic</tspan>
-                  <tspan x="600" dy="22">Sessions</tspan>
+                  {centerLabel.split(" ").map((word, idx) => (
+                    <tspan key={idx} x="600" dy={idx === 0 ? 0 : 22}>
+                      {word}
+                    </tspan>
+                  ))}
                 </text>
               </g>
 
@@ -171,16 +214,12 @@ export function Deliverables() {
                 fontSize="16"
                 fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial"
               >
-                {[
-                  { y: 110, t: "No stable focus — priorities shift weekly" },
-                  { y: 190, t: "Busy teams, weaker outcomes" },
-                  { y: 270, t: "Leadership sees different realities — decisions stall" },
-                  { y: 350, t: "Growth plans exist on paper, not in action" },
-                  { y: 430, t: "Key people are stretched thin across too many fronts" },
-                ].map((p, i) => {
+                {[110, 190, 270, 350, 430].map((y, i) => {
+                  const p = painItems[i];
+                  if (!p) return null;
                   const x = 160;
-                  const lines = splitPainLabel(p.t);
-                  const baseY = p.y - (lines.length - 1) * 10;
+                  const lines = splitPainLabel(p);
+                  const baseY = y - (lines.length - 1) * 10;
                   return (
                     <text key={`pain-label-${i}`} x={x} y={baseY} textAnchor="end">
                       {lines.map((ln, idx) => (

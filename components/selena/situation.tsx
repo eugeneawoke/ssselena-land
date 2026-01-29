@@ -1,44 +1,65 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n/context";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-type AnyT = Record<string, any>;
+const painPositions = [
+  "left-1/2 top-8 -translate-x-1/2",
+  "left-10 top-36",
+  "right-10 top-40",
+  "left-14 bottom-16",
+  "right-14 bottom-20",
+];
+
+const drifts = [
+  "[animation:driftA_17s_ease-in-out_infinite]",
+  "[animation:driftB_21s_ease-in-out_infinite_0.6s]",
+  "[animation:driftC_19s_ease-in-out_infinite_1.1s]",
+  "[animation:driftB_23s_ease-in-out_infinite_0.2s]",
+  "[animation:driftA_20s_ease-in-out_infinite_0.9s]",
+];
+
+const cardClass =
+  "select-none rounded-full border border-border/40 bg-card/15 backdrop-blur-md px-7 py-5 text-center text-sm text-muted-foreground shadow-[0_0_80px_rgba(236,72,153,0.10)] min-h-[90px] flex items-center justify-center leading-snug";
 
 export function Situation() {
   const { t } = useI18n();
-  const tt = t as unknown as AnyT;
+  const isMobile = useIsMobile();
+  const recognizeTitle = t.situation.title;
+  const recognizeItems = t.situation.items.slice(0, 5);
 
-  const recognizeTitle: string =
-    tt?.recognizeYourSituation?.title ??
-    tt?.deliverables?.recognizeTitle ??
-    "Recognize Your Situation?";
-
-  const recognizeItems: string[] =
-    (tt?.recognizeYourSituation?.items as string[]) ??
-    (tt?.deliverables?.recognizeItems as string[]) ??
-    [
-      "No stable focus — priorities shift weekly",
-      "Busy teams, weaker outcomes",
-      "Leadership sees different realities — decisions stall",
-      "Growth plans exist on paper, not in action",
-      "Key people are stretched thin across too many fronts",
-    ];
-
-  const painPositions = [
-    "left-1/2 top-8 -translate-x-1/2",
-    "left-10 top-36",
-    "right-10 top-40",
-    "left-14 bottom-16",
-    "right-14 bottom-20",
-  ];
-
-  const drifts = [
-    "[animation:driftA_17s_ease-in-out_infinite]",
-    "[animation:driftB_21s_ease-in-out_infinite_0.6s]",
-    "[animation:driftC_19s_ease-in-out_infinite_1.1s]",
-    "[animation:driftB_23s_ease-in-out_infinite_0.2s]",
-    "[animation:driftA_20s_ease-in-out_infinite_0.9s]",
-  ];
+  if (isMobile) {
+    const topItems = recognizeItems.slice(0, 2);
+    const bottomItems = recognizeItems.slice(2, 5);
+    return (
+      <section className="relative py-12 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-8">
+            {/* Top pains */}
+            <div className="flex w-full max-w-[320px] flex-col gap-4">
+              {topItems.map((text, i) => (
+                <div key={i} className={cardClass + " w-full"}>
+                  <span className="block">{text}</span>
+                </div>
+              ))}
+            </div>
+            {/* Center title */}
+            <h2 className="text-center font-serif text-4xl font-semibold text-foreground">
+              {recognizeTitle}
+            </h2>
+            {/* Bottom pains */}
+            <div className="flex w-full max-w-[320px] flex-col gap-4">
+              {bottomItems.map((text, i) => (
+                <div key={i} className={cardClass + " w-full"}>
+                  <span className="block">{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative py-20 sm:py-28">
@@ -48,19 +69,12 @@ export function Situation() {
             {recognizeTitle}
           </h2>
 
-          {recognizeItems.slice(0, 5).map((text, i) => (
+          {recognizeItems.map((text, i) => (
             <div
               key={i}
-              className={"pointer-events-none absolute " + (painPositions[i] || "")}
+              className={"pointer-events-none absolute " + (painPositions[i] ?? "")}
             >
-              <div
-                className={
-                  "select-none rounded-full border border-border/40 bg-card/15 backdrop-blur-md " +
-                  "px-7 py-5 text-center text-sm text-muted-foreground shadow-[0_0_80px_rgba(236,72,153,0.10)] " +
-                  "w-[320px] min-h-[90px] flex items-center justify-center leading-snug " +
-                  (drifts[i] || "")
-                }
-              >
+              <div className={cardClass + " w-[320px] " + (drifts[i] ?? "")}>
                 <span className="block">{text}</span>
               </div>
             </div>

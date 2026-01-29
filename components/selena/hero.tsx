@@ -1,41 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { useI18n } from "@/lib/i18n/context";
+import { smoothScrollTo } from "@/lib/scroll";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-function smoothScrollTo(targetId: string) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
-  const startPosition = window.scrollY;
-  const distance = targetPosition - startPosition;
-  const duration = 800;
-  let startTime: number | null = null;
-
-  function easeOutCubic(t: number): number {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function animation(currentTime: number) {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / duration, 1);
-    const ease = easeOutCubic(progress);
-
-    window.scrollTo(0, startPosition + distance * ease);
-
-    if (timeElapsed < duration) {
-      requestAnimationFrame(animation);
-    }
-  }
-
-  requestAnimationFrame(animation);
-}
-
 export function Hero() {
   const { t } = useI18n();
+  const [visualState, setVisualState] = useState<"before" | "after">("before");
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
@@ -47,12 +20,6 @@ export function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-12">
           {/* LEFT (content) */}
           <div className="lg:col-span-6">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <span className="h-2.5 w-2.5 rounded-full bg-primary" />
-              <span className="text-sm font-medium text-primary">Trusted by leadership teams worldwide</span>
-            </div>
-
             {/* Headline */}
             <h1 className="font-sans text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
               <span className="block">Turn Strategy Chaos</span>
@@ -85,16 +52,49 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT (placeholder) */}
+          {/* RIGHT (interactive before/after SVG) */}
           <div className="lg:col-span-6">
-            <div className="hidden lg:block">
-              <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                <div className="h-[440px] w-full" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="rounded-full border border-white/15 bg-black/20 px-4 py-2 text-xs text-white/70">
-                    Hero visual placeholder
-                  </div>
-                </div>
+            <div
+              className="hidden lg:block"
+              onMouseEnter={() => setVisualState("after")}
+              onMouseLeave={() => setVisualState("before")}
+            >
+              <div
+                className="relative w-full overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm"
+                data-state={visualState}
+              >
+                <svg
+                  className="h-[440px] w-full"
+                  viewBox="0 0 520 440"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Strategy: from chaos to focused process"
+                >
+                  {/* BEFORE: scattered blocks (chaos) */}
+                  <g
+                    className="transition-opacity duration-500"
+                    style={{ opacity: visualState === "before" ? 1 : 0 }}
+                  >
+                    <rect x="40" y="80" width="100" height="48" rx="8" fill="hsl(var(--primary) / 0.25)" transform="rotate(-4 90 104)" />
+                    <rect x="280" y="40" width="100" height="48" rx="8" fill="hsl(var(--primary) / 0.2)" transform="rotate(6 330 64)" />
+                    <rect x="380" y="160" width="100" height="48" rx="8" fill="hsl(var(--primary) / 0.2)" transform="rotate(-3 430 184)" />
+                    <rect x="80" y="280" width="100" height="48" rx="8" fill="hsl(var(--primary) / 0.15)" transform="rotate(5 130 304)" />
+                    <rect x="320" y="320" width="100" height="48" rx="8" fill="hsl(var(--primary) / 0.2)" transform="rotate(-2 370 344)" />
+                  </g>
+                  {/* AFTER: aligned process (focused) */}
+                  <g
+                    className="transition-opacity duration-500"
+                    style={{ opacity: visualState === "after" ? 1 : 0 }}
+                  >
+                    <rect x="50" y="196" width="72" height="48" rx="8" fill="hsl(var(--primary) / 0.35)" />
+                    <line x1="130" y1="220" x2="168" y2="220" stroke="hsl(var(--primary) / 0.5)" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="176" y="196" width="72" height="48" rx="8" fill="hsl(var(--primary) / 0.4)" />
+                    <line x1="256" y1="220" x2="294" y2="220" stroke="hsl(var(--primary) / 0.5)" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="302" y="196" width="72" height="48" rx="8" fill="hsl(var(--primary) / 0.45)" />
+                    <line x1="382" y1="220" x2="420" y2="220" stroke="hsl(var(--primary) / 0.5)" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="428" y="196" width="72" height="48" rx="8" fill="hsl(var(--primary) / 0.5)" />
+                  </g>
+                </svg>
               </div>
             </div>
           </div>

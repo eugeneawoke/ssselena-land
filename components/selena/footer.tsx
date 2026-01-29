@@ -2,15 +2,9 @@
 
 import { useI18n, languages } from "@/lib/i18n/context";
 import type { Language } from "@/lib/i18n/translations";
+import { smoothScrollTo } from "@/lib/scroll";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Twitter, Instagram } from "lucide-react";
-
-function smoothScrollTo(targetId: string) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
-  window.scrollTo({ top: targetPosition, behavior: "smooth" });
-}
 
 export function Footer() {
   const { t, language, setLanguage } = useI18n();

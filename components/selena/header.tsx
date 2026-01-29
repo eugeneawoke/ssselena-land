@@ -5,36 +5,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n, languages } from "@/lib/i18n/context";
 import type { Language } from "@/lib/i18n/translations";
-
-function smoothScrollTo(targetId: string) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
-  const startPosition = window.scrollY;
-  const distance = targetPosition - startPosition;
-  const duration = 800;
-  let startTime: number | null = null;
-
-  function easeOutCubic(t: number): number {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function animation(currentTime: number) {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / duration, 1);
-    const ease = easeOutCubic(progress);
-
-    window.scrollTo(0, startPosition + distance * ease);
-
-    if (timeElapsed < duration) {
-      requestAnimationFrame(animation);
-    }
-  }
-
-  requestAnimationFrame(animation);
-}
+import { smoothScrollTo } from "@/lib/scroll";
 
 export function Header() {
   const { t, language, setLanguage } = useI18n();

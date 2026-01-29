@@ -2,14 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useI18n } from "@/lib/i18n/context";
+import { smoothScrollTo } from "@/lib/scroll";
 import { Button } from "@/components/ui/button";
-
-function smoothScrollTo(targetId: string) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
-  window.scrollTo({ top: targetPosition, behavior: "smooth" });
-}
 
 export function MobileCTA() {
   const { t } = useI18n();

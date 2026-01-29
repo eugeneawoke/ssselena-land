@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n/context";
+import { smoothScrollTo } from "@/lib/scroll";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
@@ -24,13 +25,6 @@ export function Calculator() {
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
-
-  function smoothScrollTo(targetId: string) {
-    const target = document.getElementById(targetId);
-    if (!target) return;
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: targetPosition, behavior: "smooth" });
-  }
 
   return (
     <section id="calculator" className="relative py-20 sm:py-28">
