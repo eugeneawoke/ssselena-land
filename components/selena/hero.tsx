@@ -28,7 +28,7 @@ export function Hero() {
             warpStrength={1}
             mouseInfluence={1}
             parallax={0.5}
-            noise={0.1}
+            noise={0.05}
           />
         </div>
       </div>
