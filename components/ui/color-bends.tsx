@@ -39,6 +39,7 @@ const fragmentShader = `
   uniform float uWarpStrength;
   uniform float uNoise;
   uniform float uRotation;
+  uniform float uScale;
   uniform vec3 uColor1;
   uniform vec3 uColor2;
   uniform float uTransparent;
@@ -63,7 +64,7 @@ const fragmentShader = `
   }
 
   void main() {
-    vec2 uv = vUv - 0.5;
+    vec2 uv = (vUv - 0.5) / uScale + 0.5;
     uv += uMouse * uMouseInfluence;
     float rot = uRotation * 0.01745329;
     float c = cos(rot), s = sin(rot);
@@ -117,6 +118,10 @@ export function ColorBends({
   const materialRef = React.useRef<THREE.ShaderMaterial | null>(null);
   const mouseRef = React.useRef({ x: 0.5, y: 0.5 });
   const rafRef = React.useRef<number>(0);
+  const rotationRef = React.useRef(rotation);
+  const autoRotateRef = React.useRef(autoRotate);
+  rotationRef.current = rotation;
+  autoRotateRef.current = autoRotate;
 
   const colorsKey = colors.join(",");
 
@@ -152,6 +157,7 @@ export function ColorBends({
         uWarpStrength: { value: warpStrength },
         uNoise: { value: noise },
         uRotation: { value: (rotation * Math.PI) / 180 },
+        uScale: { value: scale },
         uColor1: { value: new THREE.Vector3(...c1) },
         uColor2: { value: new THREE.Vector3(...c2) },
         uTransparent: { value: transparent ? 1 : 0 },
@@ -188,7 +194,10 @@ export function ColorBends({
       rafRef.current = requestAnimationFrame(animate);
       time += 0.016;
       if (materialRef.current) {
+        const autoRad = (autoRotateRef.current * Math.PI) / 180;
         materialRef.current.uniforms.uTime.value = time;
+        materialRef.current.uniforms.uRotation.value =
+          (rotationRef.current * Math.PI) / 180 + time * autoRad;
         materialRef.current.uniforms.uMouse.value.set(
           mouseRef.current.x * parallax + (1.0 - parallax) * 0.5,
           mouseRef.current.y * parallax + (1.0 - parallax) * 0.5
@@ -227,11 +236,12 @@ export function ColorBends({
     mat.uniforms.uWarpStrength.value = warpStrength;
     mat.uniforms.uNoise.value = noise;
     mat.uniforms.uRotation.value = (rotation * Math.PI) / 180;
+    mat.uniforms.uScale.value = scale;
     mat.uniforms.uColor1.value.set(c1[0], c1[1], c1[2]);
     mat.uniforms.uColor2.value.set(c2[0], c2[1], c2[2]);
     mat.uniforms.uTransparent.value = transparent ? 1 : 0;
     mat.uniforms.uMouseInfluence.value = mouseInfluence;
-  }, [rotation, speed, colorsKey, transparent, frequency, warpStrength, mouseInfluence, parallax, noise]);
+  }, [rotation, speed, autoRotate, scale, colorsKey, transparent, frequency, warpStrength, mouseInfluence, parallax, noise]);
 
   return (
     <div
