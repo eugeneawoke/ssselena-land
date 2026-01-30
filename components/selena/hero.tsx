@@ -44,14 +44,14 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center text-center">
-          {/* Headline — по центру, шрифт в 1.7 раза меньше */}
-          <h1 className="font-sans text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 max-w-2xl">
+          {/* Headline — по центру, шрифт в 1.5 раза больше относительно базового */}
+          <h1 className="font-sans text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 max-w-2xl">
             <span className="block">Turn Strategy Chaos</span>
-            <span className="block text-muted-foreground mt-1">Into Focused Action</span>
+            <span className="block text-primary mt-1">Into Focused Action</span>
           </h1>
 
-          {/* Description — по центру, шрифт в 1.7 раза меньше */}
-          <p className="mt-5 max-w-xl text-xs leading-relaxed text-muted-foreground sm:text-sm animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 text-pretty">
+          {/* Description — по центру, шрифт в 1.5 раза больше */}
+          <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 text-pretty">
             {t.hero.description}
           </p>
 

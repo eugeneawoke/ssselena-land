@@ -48,7 +48,15 @@ export function Header() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative h-full w-full">
+          {/* Плавный переход в нижних ~20% хедера от полупрозрачного к прозрачному при скролле */}
+          {isScrolled && (
+            <div
+              className="pointer-events-none absolute bottom-0 left-0 right-0 h-[20%] min-h-[12px] bg-gradient-to-t from-background/90 to-transparent"
+              aria-hidden
+            />
+          )}
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <a
@@ -129,6 +137,7 @@ export function Header() {
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
+        </div>
         </div>
       </header>
 
