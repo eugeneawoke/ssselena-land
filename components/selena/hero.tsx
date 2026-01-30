@@ -43,43 +43,37 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-12">
-          {/* LEFT (content) */}
-          <div className="lg:col-span-6">
-            {/* Headline */}
-            <h1 className="font-sans text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-              <span className="block">Turn Strategy Chaos</span>
-              <span className="block text-primary">Into Focused Action</span>
-            </h1>
+        <div className="flex flex-col items-center justify-center text-center">
+          {/* Headline — по центру, шрифт в 1.7 раза меньше */}
+          <h1 className="font-sans text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 max-w-2xl">
+            <span className="block">Turn Strategy Chaos</span>
+            <span className="block text-muted-foreground mt-1">Into Focused Action</span>
+          </h1>
 
-            {/* Description */}
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 text-pretty">
-              {t.hero.description}
-            </p>
+          {/* Description — по центру, шрифт в 1.7 раза меньше */}
+          <p className="mt-5 max-w-xl text-xs leading-relaxed text-muted-foreground sm:text-sm animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 text-pretty">
+            {t.hero.description}
+          </p>
 
-            {/* CTAs */}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300">
-              <Button
-                size="lg"
-                onClick={() => smoothScrollTo("calculator")}
-                className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 shadow-lg shadow-primary/25"
-              >
-                {t.cta.calculatePrice}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => smoothScrollTo("contact")}
-                className="border-border/50 hover:bg-secondary px-8"
-              >
-                {t.cta.requestConsultation}
-              </Button>
-            </div>
+          {/* CTA — две кнопки по центру, как на примере */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 justify-center animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300">
+            <Button
+              size="default"
+              onClick={() => smoothScrollTo("calculator")}
+              className="group bg-primary text-primary-foreground hover:bg-primary/90 px-6 shadow-lg shadow-primary/25 rounded-lg"
+            >
+              {t.cta.calculatePrice}
+              <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              size="default"
+              variant="outline"
+              onClick={() => smoothScrollTo("contact")}
+              className="border border-border bg-transparent hover:bg-secondary/50 px-6 rounded-lg"
+            >
+              {t.cta.requestConsultation}
+            </Button>
           </div>
-
-          {/* Right column kept for grid balance (background is ColorBends) */}
-          <div className="lg:col-span-6" />
         </div>
       </div>
     </section>
