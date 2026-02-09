@@ -52,13 +52,13 @@ export function ContactForm() {
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-semibold">
                       {index + 1}
                     </span>
-                    <span className="text-muted-foreground text-sm">{step}</span>
+                    <span className="text-base md:text-sm text-foreground/85 md:text-muted-foreground">{step}</span>
                   </li>
                 ))}
               </ol>
             </div>
 
-            <Button onClick={handleReset} variant="outline" className="gap-2 bg-transparent">
+            <Button onClick={handleReset} variant="outline" className="cursor-pointer gap-2 bg-transparent">
               <ArrowLeft className="h-4 w-4" />
               {t.cta.submitAnother}
             </Button>
@@ -75,7 +75,7 @@ export function ContactForm() {
           <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
             {t.form.title}
           </h2>
-          <p className="mt-4 text-muted-foreground">{t.form.subtitle}</p>
+          <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.form.subtitle}</p>
         </div>
 
         <form
@@ -84,7 +84,7 @@ export function ContactForm() {
         >
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="name" className="block text-base md:text-sm font-medium text-foreground mb-2">
                 {t.form.name}
               </label>
               <Input
@@ -93,11 +93,11 @@ export function ContactForm() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-input border-border"
+                className="min-h-[40px] bg-input border-border"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="email" className="block text-base md:text-sm font-medium text-foreground mb-2">
                 {t.form.email}
               </label>
               <Input
@@ -106,14 +106,14 @@ export function ContactForm() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-input border-border"
+                className="min-h-[40px] bg-input border-border"
               />
             </div>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="company" className="block text-base md:text-sm font-medium text-foreground mb-2">
                 {t.form.company}
               </label>
               <Input
@@ -121,11 +121,11 @@ export function ContactForm() {
                 type="text"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className="bg-input border-border"
+                className="min-h-[40px] bg-input border-border"
               />
             </div>
             <div>
-              <label htmlFor="teamSize" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="teamSize" className="block text-base md:text-sm font-medium text-foreground mb-2">
                 {t.form.teamSize}
               </label>
               <Input
@@ -133,14 +133,14 @@ export function ContactForm() {
                 type="text"
                 value={formData.teamSize}
                 onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                className="bg-input border-border"
-                placeholder="e.g., 50-100"
+                className="min-h-[40px] bg-input border-border"
+                placeholder=""
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+            <label htmlFor="message" className="block text-base md:text-sm font-medium text-foreground mb-2">
               {t.form.message}
             </label>
             <Textarea
@@ -155,7 +155,7 @@ export function ContactForm() {
           <Button
             type="submit"
             size="lg"
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+            className="min-h-[40px] w-full cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
           >
             <Send className="h-4 w-4" />
             {t.cta.submitRequest}

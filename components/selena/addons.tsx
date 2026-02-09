@@ -15,7 +15,7 @@ export function AddOns() {
           <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
             {t.addons.title}
           </h2>
-          <p className="mt-4 text-muted-foreground">{t.addons.subtitle}</p>
+          <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.addons.subtitle}</p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -30,7 +30,7 @@ export function AddOns() {
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">{addon.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{addon.desc}</p>
+                <p className="text-base md:text-sm text-foreground/85 md:text-muted-foreground mb-4">{addon.desc}</p>
                 <p className="text-lg font-semibold text-primary">{addon.price}</p>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
               </div>

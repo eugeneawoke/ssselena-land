@@ -61,7 +61,7 @@ export function Header() {
             {/* Logo */}
             <a
               href="#"
-              className="font-serif text-2xl font-semibold tracking-wide text-foreground"
+              className="cursor-pointer font-serif text-2xl font-semibold tracking-wide text-foreground"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -76,7 +76,7 @@ export function Header() {
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="cursor-pointer text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {item.label}
                 </button>
@@ -89,7 +89,7 @@ export function Header() {
               <div className="relative">
                 <button
                   onClick={() => setIsLangOpen(!isLangOpen)}
-                  className="flex items-center gap-1 rounded-md px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="cursor-pointer flex items-center gap-1 rounded-md px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {languages.find((l) => l.code === language)?.flag}
                   <ChevronDown className="h-3 w-3" />
@@ -100,7 +100,7 @@ export function Header() {
                       <button
                         key={lang.code}
                         onClick={() => handleLanguageChange(lang.code)}
-                        className={`block w-full rounded-md px-3 py-1.5 text-left text-sm transition-colors hover:bg-secondary ${
+                        className={`cursor-pointer block w-full rounded-md px-3 py-1.5 text-left text-sm transition-colors hover:bg-secondary ${
                           language === lang.code ? "text-primary" : "text-foreground"
                         }`}
                       >
@@ -112,17 +112,17 @@ export function Header() {
               </div>
 
               <Button
-                variant="ghost"
+                variant="outline"
                 size="sm"
                 onClick={() => handleNavClick("contact")}
-                className="text-muted-foreground hover:text-foreground"
+                className="cursor-pointer border border-primary/30 text-muted-foreground hover:bg-primary/10 hover:text-primary"
               >
                 {t.cta.requestConsultation}
               </Button>
               <Button
                 size="sm"
                 onClick={() => handleNavClick("calculator")}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 {t.cta.calculatePrice}
               </Button>
@@ -131,7 +131,7 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="rounded-md p-2 text-foreground md:hidden"
+              className="cursor-pointer rounded-md p-2 text-foreground md:hidden"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -161,7 +161,7 @@ export function Header() {
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="text-left text-lg text-foreground py-2 border-b border-border/50 transition-colors hover:text-primary"
+                className="cursor-pointer text-left text-lg text-foreground py-2 border-b border-border/50 transition-colors hover:text-primary"
               >
                 {item.label}
               </button>
@@ -175,7 +175,7 @@ export function Header() {
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+                    className={`cursor-pointer rounded-md px-3 py-1.5 text-sm transition-colors ${
                       language === lang.code
                         ? "bg-primary text-primary-foreground"
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -191,13 +191,13 @@ export function Header() {
               <Button
                 variant="outline"
                 onClick={() => handleNavClick("contact")}
-                className="w-full"
+                className="cursor-pointer w-full border-primary/30 hover:bg-primary/10 hover:text-primary"
               >
                 {t.cta.requestConsultation}
               </Button>
               <Button
                 onClick={() => handleNavClick("calculator")}
-                className="w-full bg-primary text-primary-foreground"
+                className="cursor-pointer w-full bg-primary text-primary-foreground"
               >
                 {t.cta.calculatePrice}
               </Button>

@@ -77,7 +77,7 @@ export function HowItWorks() {
                     }`}
                   >
                     <h3 className="text-lg font-semibold text-foreground mb-1">{step.title}</h3>
-                    <p className="text-muted-foreground">{step.desc}</p>
+                    <p className="text-base md:text-sm text-foreground/85 md:text-muted-foreground">{step.desc}</p>
                   </div>
                 </div>
               );

@@ -23,7 +23,7 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between p-5 text-left"
+                className="cursor-pointer flex w-full items-center justify-between p-5 text-left"
                 aria-expanded={openIndex === index}
               >
                 <span className="font-medium text-foreground">{item.q}</span>

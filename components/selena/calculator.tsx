@@ -33,13 +33,13 @@ export function Calculator() {
           <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
             {t.calculator.title}
           </h2>
-          <p className="mt-4 text-muted-foreground">{t.calculator.subtitle}</p>
+          <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.calculator.subtitle}</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-6 sm:p-8">
           {/* Team Size */}
           <div className="mb-8">
-            <label className="block text-sm font-medium text-foreground mb-4">
+            <label className="block text-base md:text-sm font-medium text-foreground mb-4">
               {t.calculator.teamSize}
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -47,7 +47,7 @@ export function Calculator() {
                 <button
                   key={index}
                   onClick={() => setTeamSize(index)}
-                  className={`rounded-lg border px-4 py-3 text-sm transition-all ${
+                  className={`min-h-[40px] cursor-pointer rounded-lg border px-4 py-3 text-base md:text-sm transition-all ${
                     teamSize === index
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border bg-secondary/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
@@ -61,7 +61,7 @@ export function Calculator() {
 
           {/* Session Type */}
           <div className="mb-8">
-            <label className="block text-sm font-medium text-foreground mb-4">
+            <label className="block text-base md:text-sm font-medium text-foreground mb-4">
               {t.calculator.sessionType}
             </label>
             <div className="grid sm:grid-cols-3 gap-3">
@@ -69,7 +69,7 @@ export function Calculator() {
                 <button
                   key={index}
                   onClick={() => setSessionType(index)}
-                  className={`rounded-lg border px-4 py-3 text-sm transition-all ${
+                  className={`min-h-[40px] cursor-pointer rounded-lg border px-4 py-3 text-base md:text-sm transition-all ${
                     sessionType === index
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border bg-secondary/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
@@ -83,7 +83,7 @@ export function Calculator() {
 
           {/* Add-ons */}
           <div className="mb-8">
-            <label className="block text-sm font-medium text-foreground mb-4">
+            <label className="block text-base md:text-sm font-medium text-foreground mb-4">
               {t.calculator.addOns}
             </label>
             <div className="space-y-3">
@@ -91,7 +91,7 @@ export function Calculator() {
                 <button
                   key={index}
                   onClick={() => toggleAddOn(index)}
-                  className={`w-full flex items-center justify-between rounded-lg border px-4 py-3 text-left transition-all ${
+                  className={`min-h-[40px] cursor-pointer w-full flex items-center justify-between rounded-lg border px-4 py-3 text-left transition-all ${
                     selectedAddOns.includes(index)
                       ? "border-primary bg-primary/10"
                       : "border-border bg-secondary/50 hover:border-primary/50 hover:bg-secondary"
@@ -129,11 +129,11 @@ export function Calculator() {
                 ${total.toLocaleString()}
               </span>
             </div>
-            <p className="text-xs text-muted-foreground mb-4">{t.calculator.disclaimer}</p>
+            <p className="text-sm md:text-xs text-foreground/85 md:text-muted-foreground mb-4">{t.calculator.disclaimer}</p>
             <Button
               size="lg"
               onClick={() => smoothScrollTo("contact")}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+              className="min-h-[40px] cursor-pointer w-full bg-primary text-primary-foreground hover:bg-primary/90"
             >
               {t.cta.requestConsultation}
             </Button>

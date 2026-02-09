@@ -15,7 +15,7 @@ export function Outcomes() {
           <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
             {t.outcomes.title}
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground max-w-2xl mx-auto">
             {t.outcomes.subtitle}
           </p>
         </div>
@@ -34,7 +34,7 @@ export function Outcomes() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    <p className="text-base md:text-sm text-foreground/85 md:text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />

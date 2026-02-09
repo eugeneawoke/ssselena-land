@@ -15,35 +15,35 @@ export function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#" className="font-serif text-2xl font-semibold tracking-wide text-foreground">
+            <a href="#" className="cursor-pointer font-serif text-2xl font-semibold tracking-wide text-foreground">
               <span className="text-primary">sss</span>elena
             </a>
-            <p className="mt-4 max-w-xs text-muted-foreground">{t.footer.tagline}</p>
+            <p className="mt-4 max-w-xs text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.footer.tagline}</p>
             <div className="mt-6 flex gap-4">
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
                 href="mailto:hello@ssselena.com"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
@@ -58,7 +58,7 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:hello@ssselena.com"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
                 >
                   hello@ssselena.com
                 </a>
@@ -68,12 +68,12 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4 mt-6">{t.footer.legal}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors">
                   {t.footer.privacy}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors">
                   {t.footer.terms}
                 </a>
               </li>
@@ -84,7 +84,7 @@ export function Footer() {
           <div>
             <Button
               onClick={() => smoothScrollTo("calculator")}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mb-6"
+              className="min-h-[40px] cursor-pointer w-full bg-primary text-primary-foreground hover:bg-primary/90 mb-6"
             >
               {t.cta.calculatePrice}
             </Button>
@@ -96,7 +96,7 @@ export function Footer() {
                   <button
                     key={lang.code}
                     onClick={() => setLanguage(lang.code as Language)}
-                    className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+                    className={`cursor-pointer rounded-md px-3 py-1.5 text-sm transition-colors ${
                       language === lang.code
                         ? "bg-primary text-primary-foreground"
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -111,7 +111,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-sm text-muted-foreground">{t.footer.copyright}</p>
+          <p className="text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.footer.copyright}</p>
         </div>
       </div>
     </footer>

@@ -46,12 +46,12 @@ export function Hero() {
         <div className="flex flex-col items-center justify-center text-center">
           {/* Headline — по центру, шрифт в 1.5 раза больше относительно базового */}
           <h1 className="font-sans text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 max-w-2xl">
-            <span className="block">Turn Strategy Chaos</span>
-            <span className="block text-primary mt-1">Into Focused Action</span>
+            <span className="block">{t.hero.headlineLine1}</span>
+            <span className="block text-primary mt-1">{t.hero.headlineLine2}</span>
           </h1>
 
           {/* Description — по центру, шрифт в 1.5 раза больше */}
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 text-pretty">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/85 md:text-muted-foreground animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 text-pretty">
             {t.hero.description}
           </p>
 
@@ -60,7 +60,7 @@ export function Hero() {
             <Button
               size="default"
               onClick={() => smoothScrollTo("calculator")}
-              className="group bg-primary text-primary-foreground hover:bg-primary/90 px-6 shadow-lg shadow-primary/25 rounded-lg"
+              className="group cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 px-6 shadow-lg shadow-primary/25 rounded-lg"
             >
               {t.cta.calculatePrice}
               <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -69,7 +69,7 @@ export function Hero() {
               size="default"
               variant="outline"
               onClick={() => smoothScrollTo("contact")}
-              className="border border-border bg-transparent hover:bg-secondary/50 px-6 rounded-lg"
+              className="cursor-pointer border border-primary/30 bg-transparent hover:bg-primary/10 hover:text-primary px-6 rounded-lg"
             >
               {t.cta.requestConsultation}
             </Button>

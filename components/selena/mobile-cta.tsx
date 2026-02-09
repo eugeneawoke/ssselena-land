@@ -38,7 +38,7 @@ export function MobileCTA() {
       <div className="bg-card/95 backdrop-blur-md border-t border-border px-4 py-3">
         <Button
           onClick={() => smoothScrollTo("calculator")}
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+          className="min-h-[40px] cursor-pointer w-full bg-primary text-primary-foreground hover:bg-primary/90"
         >
           {t.cta.calculatePrice}
         </Button>

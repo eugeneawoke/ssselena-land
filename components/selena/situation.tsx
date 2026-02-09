@@ -20,7 +20,7 @@ const drifts = [
 ];
 
 const cardClass =
-  "select-none rounded-full border border-border/40 bg-card/15 backdrop-blur-md px-7 py-5 text-center text-sm text-muted-foreground shadow-[0_0_80px_rgba(236,72,153,0.10)] min-h-[90px] flex items-center justify-center leading-snug";
+  "select-none rounded-full border border-border/40 bg-card/15 backdrop-blur-md px-7 py-5 text-center text-base md:text-sm text-foreground/85 md:text-muted-foreground shadow-[0_0_80px_rgba(236,72,153,0.10)] min-h-[90px] flex items-center justify-center leading-snug";
 
 export function Situation() {
   const { t } = useI18n();
