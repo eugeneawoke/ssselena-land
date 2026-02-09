@@ -76,8 +76,7 @@ export function HowItWorks() {
                       isActive ? "opacity-100 translate-y-0" : "opacity-50 translate-y-2"
                     }`}
                   >
-                    <h3 className="text-lg font-semibold text-foreground mb-1">{step.title}</h3>
-                    <p className="text-base md:text-sm text-foreground/85 md:text-muted-foreground">{step.desc}</p>
+                    <h3 className="text-lg font-semibold text-foreground">{step}</h3>
                   </div>
                 </div>
               );

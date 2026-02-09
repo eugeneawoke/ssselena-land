@@ -47,11 +47,11 @@ export const translations = {
     howItWorks: {
       title: "How We Work",
       steps: [
-        { title: "Intro Call", desc: "Joint call to identify pain points and goals for your business" },
-        { title: "Preparation", desc: "Preparing and agreeing an action plan for the strategic session" },
-        { title: "The Session", desc: "Running the session itself (1–2 days)" },
-        { title: "Handover", desc: "Transfer of documentation and materials from the session" },
-        { title: "Follow-up", desc: "Support meeting on implementation results, gathering feedback" },
+        "Intro call to identify pain points and goals for your business",
+        "Preparation and agreement of the action plan for the strategic session",
+        "Running the session itself (1–2 days)",
+        "Transfer of documentation and materials obtained during the session",
+        "Support meeting on implementation results, gathering feedback",
       ],
     },
     deliverables: {
@@ -200,11 +200,11 @@ export const translations = {
     howItWorks: {
       title: "Как мы работаем",
       steps: [
-        { title: "Общий звонок", desc: "выявление боли и цели для вашего бизнеса" },
-        { title: "Подготовка", desc: "подготовка и согласование плана действий для стратегической сессии" },
-        { title: "Проведение сессии", desc: "проведение самой сессии (1-2 дня)" },
-        { title: "Передача материалов", desc: "передача документации и материалов, полученных в ходе сессии" },
-        { title: "Поддерживающая встреча", desc: "встреча по результатам внедрения стратегии, сбор обратной связи" },
+        "Общий звонок для выявления боли и цели для вашего бизнеса",
+        "Подготовка и согласование плана действий для стратегической сессии",
+        "Проведение самой сессии (1-2 дня)",
+        "Передача документации и материалов, полученных в ходе сессии",
+        "Поддерживающая встреча по результатам внедрения стратегии, сбор обратной связи",
       ],
     },
     deliverables: {
@@ -353,11 +353,11 @@ export const translations = {
     howItWorks: {
       title: "როგორ ვმუშაობთ",
       steps: [
-        { title: "საერთო ზარი", desc: "ტკივილისა და მიზნის გამოვლენა თქვენი ბიზნესისთვის" },
-        { title: "მომზადება", desc: "პლანის მომზადება და შეთანხმება სტრატეგიული სესიისთვის" },
-        { title: "სესიის ჩატარება", desc: "თავად სესიის ჩატარება (1-2 დღე)" },
-        { title: "მასალების გადაცემა", desc: "დოკუმენტაციისა და მასალების გადაცემა სესიის მიღებული" },
-        { title: "მხარდაჭერის შეხვედრა", desc: "შეხვედრა სტრატეგიის იმპლემენტაციის შედეგებზე, უკუკავშირის შეგროვება" },
+        "საერთო ზარი ტკივილისა და მიზნის გამოვლენისთვის თქვენი ბიზნესისთვის",
+        "პლანის მომზადება და შეთანხმება სტრატეგიული სესიისთვის",
+        "თავად სესიის ჩატარება (1-2 დღე)",
+        "დოკუმენტაციისა და მასალების გადაცემა სესიის მიღებული",
+        "შეხვედრა სტრატეგიის იმპლემენტაციის შედეგებზე, უკუკავშირის შეგროვება",
       ],
     },
     deliverables: {
@@ -506,11 +506,11 @@ export const translations = {
     howItWorks: {
       title: "Біз қалай жұмыс істейміз",
       steps: [
-        { title: "Жалпы қоңырау", desc: "бізнесіңіз үшін ауырсыну мен мақсатты анықтау" },
-        { title: "Дайындық", desc: "стратегиялық сессияға әрекет жоспарын дайындау және келісу" },
-        { title: "Сессия өткізу", desc: "сессияның өзі (1-2 күн)" },
-        { title: "Материалдарды беру", desc: "сессия барысында алынған құжаттама мен материалдарды беру" },
-        { title: "Қолдау кездесуі", desc: "стратегия іске асыру нәтижелері бойынша кездесу, кері байланыс жинау" },
+        "Жалпы қоңырау бізнесіңіз үшін ауырсыну мен мақсатты анықтау үшін",
+        "Стратегиялық сессияға әрекет жоспарын дайындау және келісу",
+        "Сессияның өзі (1-2 күн)",
+        "Сессия барысында алынған құжаттама мен материалдарды беру",
+        "Стратегия іске асыру нәтижелері бойынша кездесу, кері байланыс жинау",
       ],
     },
     deliverables: {
