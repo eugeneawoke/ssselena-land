@@ -39,7 +39,15 @@ export function FAQ() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="px-5 pb-5 text-muted-foreground">{item.a}</p>
+                  {"bullets" in item && item.bullets ? (
+                    <ul className="list-disc list-inside space-y-2 px-5 pb-5 text-muted-foreground">
+                      {item.bullets.map((bullet, i) => (
+                        <li key={i}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="px-5 pb-5 text-muted-foreground">{item.a}</p>
+                  )}
                 </div>
               </div>
             </div>

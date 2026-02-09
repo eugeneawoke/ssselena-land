@@ -39,6 +39,6 @@ export function useI18n() {
 export const languages: { code: Language; name: string; flag: string }[] = [
   { code: "en", name: "English", flag: "EN" },
   { code: "ru", name: "Русский", flag: "RU" },
-  { code: "ka", name: "ქართული", flag: "KA" },
-  { code: "kk", name: "Қазақша", flag: "KK" },
+  { code: "ka", name: "ქართული", flag: "GE" },
+  { code: "kk", name: "Қазақша", flag: "KZ" },
 ];
