@@ -19,7 +19,7 @@ export function FAQ() {
           {t.faq.items.map((item, index) => (
             <div
               key={index}
-              className="rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden transition-colors hover:border-primary/30"
+              className="rounded-xl border-2 border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-colors hover:border-primary/40"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

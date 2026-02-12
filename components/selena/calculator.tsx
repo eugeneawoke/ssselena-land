@@ -47,7 +47,7 @@ export function Calculator() {
                 <button
                   key={index}
                   onClick={() => setTeamSize(index)}
-                  className={`min-h-[40px] cursor-pointer rounded-lg border px-4 py-3 text-base md:text-sm transition-all ${
+                  className={`min-h-[40px] cursor-pointer rounded-lg border-2 px-4 py-3 text-base md:text-sm transition-all ${
                     teamSize === index
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border bg-secondary/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
@@ -69,7 +69,7 @@ export function Calculator() {
                 <button
                   key={index}
                   onClick={() => setSessionType(index)}
-                  className={`min-h-[40px] cursor-pointer rounded-lg border px-4 py-3 text-base md:text-sm transition-all ${
+                  className={`min-h-[40px] cursor-pointer rounded-lg border-2 px-4 py-3 text-base md:text-sm transition-all ${
                     sessionType === index
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border bg-secondary/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
@@ -91,7 +91,7 @@ export function Calculator() {
                 <button
                   key={index}
                   onClick={() => toggleAddOn(index)}
-                  className={`min-h-[40px] cursor-pointer w-full flex items-center justify-between rounded-lg border px-4 py-3 text-left transition-all ${
+                  className={`min-h-[40px] cursor-pointer w-full flex items-center justify-between rounded-lg border-2 px-4 py-3 text-left transition-all ${
                     selectedAddOns.includes(index)
                       ? "border-primary bg-primary/10"
                       : "border-border bg-secondary/50 hover:border-primary/50 hover:bg-secondary"
@@ -101,8 +101,8 @@ export function Calculator() {
                     <div
                       className={`h-5 w-5 rounded border flex items-center justify-center transition-colors ${
                         selectedAddOns.includes(index)
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border"
+                          ? "border-2 border-primary bg-primary text-primary-foreground"
+                          : "border-2 border-border"
                       }`}
                     >
                       {selectedAddOns.includes(index) && <Check className="h-3 w-3" />}

@@ -80,7 +80,7 @@ export function ContactForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 sm:p-8 space-y-6"
+          className="rounded-2xl border-2 border-border bg-card/50 backdrop-blur-sm p-6 sm:p-8 space-y-6"
         >
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
@@ -93,7 +93,7 @@ export function ContactForm() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="min-h-[40px] bg-input border-border"
+                className="min-h-[40px] bg-input border-2 border-border focus-visible:border-primary"
               />
             </div>
             <div>
@@ -106,7 +106,7 @@ export function ContactForm() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="min-h-[40px] bg-input border-border"
+                className="min-h-[40px] bg-input border-2 border-border focus-visible:border-primary"
               />
             </div>
           </div>
@@ -121,7 +121,7 @@ export function ContactForm() {
                 type="text"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className="min-h-[40px] bg-input border-border"
+                className="min-h-[40px] bg-input border-2 border-border focus-visible:border-primary"
               />
             </div>
             <div>
@@ -133,7 +133,7 @@ export function ContactForm() {
                 type="text"
                 value={formData.teamSize}
                 onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                className="min-h-[40px] bg-input border-border"
+                className="min-h-[40px] bg-input border-2 border-border focus-visible:border-primary"
                 placeholder=""
               />
             </div>
@@ -148,7 +148,7 @@ export function ContactForm() {
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="bg-input border-border resize-none"
+              className="bg-input border-2 border-border resize-none focus-visible:border-primary"
             />
           </div>
 
