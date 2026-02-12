@@ -12,7 +12,7 @@ export function AddOns() {
     <section className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
+          <h2 className="font-sans text-3xl font-semibold text-foreground sm:text-4xl">
             {t.addons.title}
           </h2>
           <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.addons.subtitle}</p>

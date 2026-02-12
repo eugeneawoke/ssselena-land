@@ -61,7 +61,7 @@ export function Header() {
             {/* Logo */}
             <a
               href="#"
-              className="cursor-pointer font-serif text-2xl font-semibold tracking-wide text-foreground"
+              className="cursor-pointer font-sans text-2xl font-semibold tracking-wide text-foreground"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });

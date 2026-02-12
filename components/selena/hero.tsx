@@ -45,9 +45,9 @@ export function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center text-center">
           {/* Headline — по центру, шрифт в 1.5 раза больше относительно базового */}
-          <h1 className="font-sans text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 max-w-2xl">
-            <span className="block">{t.hero.headlineLine1}</span>
-            <span className="block text-primary mt-1">{t.hero.headlineLine2}</span>
+          <h1 className="font-sans text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 max-w-2xl w-full flex flex-col items-center text-center">
+            <span className="block w-full">{t.hero.headlineLine1}</span>
+            <span className="block w-full text-primary mt-1">{t.hero.headlineLine2}</span>
           </h1>
 
           {/* Description — по центру, шрифт в 1.5 раза больше */}

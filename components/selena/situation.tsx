@@ -44,7 +44,7 @@ export function Situation() {
               ))}
             </div>
             {/* Center title */}
-            <h2 className="text-center font-serif text-4xl font-semibold text-foreground">
+            <h2 className="text-center font-sans text-4xl font-semibold text-foreground">
               {recognizeTitle}
             </h2>
             {/* Bottom pains */}
@@ -65,7 +65,7 @@ export function Situation() {
     <section className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="relative mx-auto flex min-h-[560px] items-center justify-center [animation:cloudFloat_18s_ease-in-out_infinite]">
-          <h2 className="pointer-events-none select-none text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
+          <h2 className="pointer-events-none select-none text-center font-sans text-4xl font-semibold text-foreground sm:text-5xl">
             {recognizeTitle}
           </h2>
 

@@ -30,7 +30,7 @@ export function Calculator() {
     <section id="calculator" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
+          <h2 className="font-sans text-3xl font-semibold text-foreground sm:text-4xl">
             {t.calculator.title}
           </h2>
           <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.calculator.subtitle}</p>
@@ -125,7 +125,7 @@ export function Calculator() {
           <div className="rounded-xl bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/30 p-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-muted-foreground">{t.calculator.total}</span>
-              <span className="font-serif text-3xl font-semibold text-foreground">
+              <span className="font-sans text-3xl font-semibold text-foreground">
                 ${total.toLocaleString()}
               </span>
             </div>

@@ -12,7 +12,7 @@ export function Outcomes() {
     <section id="outcomes" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
+          <h2 className="font-sans text-3xl font-semibold text-foreground sm:text-4xl">
             {t.outcomes.title}
           </h2>
           <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground max-w-2xl mx-auto">

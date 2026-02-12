@@ -44,7 +44,7 @@ export function Deliverables() {
     return (
       <section className="relative py-12 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
+          <h2 className="text-center font-sans text-4xl font-semibold text-foreground sm:text-5xl">
             {tangibleTitle}
           </h2>
           <div
@@ -98,7 +98,7 @@ export function Deliverables() {
   return (
     <section className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-serif text-4xl font-semibold text-foreground sm:text-5xl">
+        <h2 className="text-center font-sans text-4xl font-semibold text-foreground sm:text-5xl">
           {tangibleTitle}
         </h2>
 

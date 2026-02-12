@@ -39,7 +39,7 @@ export function ContactForm() {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
               <Check className="h-8 w-8" />
             </div>
-            <h2 className="font-serif text-2xl font-semibold text-foreground mb-2">
+            <h2 className="font-sans text-2xl font-semibold text-foreground mb-2">
               {t.form.success.title}
             </h2>
             <p className="text-muted-foreground mb-8">{t.form.success.subtitle}</p>
@@ -72,7 +72,7 @@ export function ContactForm() {
     <section id="contact" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
+          <h2 className="font-sans text-3xl font-semibold text-foreground sm:text-4xl">
             {t.form.title}
           </h2>
           <p className="mt-4 text-base md:text-sm text-foreground/85 md:text-muted-foreground">{t.form.subtitle}</p>

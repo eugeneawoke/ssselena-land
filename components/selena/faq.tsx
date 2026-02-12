@@ -11,7 +11,7 @@ export function FAQ() {
   return (
     <section id="faq" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-serif text-3xl font-semibold text-foreground text-center sm:text-4xl mb-12">
+        <h2 className="font-sans text-3xl font-semibold text-foreground text-center sm:text-4xl mb-12">
           {t.faq.title}
         </h2>
 

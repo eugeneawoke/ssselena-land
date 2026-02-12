@@ -35,7 +35,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" ref={sectionRef} className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-serif text-3xl font-semibold text-foreground text-center sm:text-4xl mb-16">
+        <h2 className="font-sans text-3xl font-semibold text-foreground text-center sm:text-4xl mb-16">
           {t.howItWorks.title}
         </h2>
 
@@ -76,7 +76,14 @@ export function HowItWorks() {
                       isActive ? "opacity-100 translate-y-0" : "opacity-50 translate-y-2"
                     }`}
                   >
-                    <h3 className="text-lg font-semibold text-foreground">{step}</h3>
+                    {typeof step === "string" ? (
+                      <h3 className="text-lg font-semibold text-foreground">{step}</h3>
+                    ) : (
+                      <>
+                        <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
+                        <p className="mt-1.5 text-base text-foreground/85 md:text-muted-foreground">{step.desc}</p>
+                      </>
+                    )}
                   </div>
                 </div>
               );
